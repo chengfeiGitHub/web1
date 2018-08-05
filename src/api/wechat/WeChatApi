@@ -1,0 +1,9 @@
+import fetch from '../../utils/fetch'
+let qs = require('qs')
+
+export function getWechatSubApi () {
+  return fetch({
+    url: 'localhost:8200/getInfo',
+    method: 'get'
+  })
+}
