@@ -18,7 +18,8 @@
               <el-table-column type="index"></el-table-column>
               <el-table-column prop="account_name" label="账号"></el-table-column>
               <el-table-column prop="account_owner" label="账号主体"></el-table-column>
-              <el-table-column prop="account_info" label="账号简介"></el-table-column>
+              <el-table-column prop="account_info" label="账号简介">
+              </el-table-column>
               <el-table-column prop="time_add_account" label="加入监控队列时间"></el-table-column>
               <el-table-column prop="time_last_update" label="最后一次爬取时间"></el-table-column>
               <el-table-column prop="num_total_articles" label="文章总数"></el-table-column>
@@ -27,8 +28,13 @@
                   <el-button
                     type="text"
                     size="small"
-                    icon="el-icon-edit"
+                    icon="el-icon-delete"
                     @click="deleteWechat(scope.row)">删除</el-button>
+                  <el-button
+                    type="text"
+                    size="small"
+                    icon="el-icon-edit"
+                    @click="goToWeChatAccountDetail(scope.row)">詳情</el-button>
                 </template>
               </el-table-column>
             </el-table>
@@ -165,6 +171,10 @@ export default{
     },
     cancleAddWeChatSub: function () {
       this.addWechatSubDialog = false
+    },
+    // 页面跳转需要传递参数， params就是需要传递的参数，在另外一个页面weChatSub就可以使用了
+    goToWeChatAccountDetail: function (row) {
+      this.$router.push({name: 'weChatDetail', params: {weChatSub: row}})
     }
   }
 }
